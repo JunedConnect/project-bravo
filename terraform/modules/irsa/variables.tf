@@ -17,3 +17,8 @@ variable "route53-zone-id" {
   description = "Route 53 hosted zone ID"
   type        = string
 }
+
+variable "tags" {
+  description = "Tags for Resources"
+  type        = map(string)
+}

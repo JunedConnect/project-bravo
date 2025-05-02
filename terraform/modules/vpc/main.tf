@@ -32,9 +32,7 @@ resource "aws_vpc" "this" {
   enable_dns_support   = var.enable-dns-support
   enable_dns_hostnames = var.enable-dns-hostnames
 
-  tags = {
-    "kubernetes.io/cluster/${var.name}" = "owned"
-  }
+  tags = var.tags
 }
 
 

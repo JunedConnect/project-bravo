@@ -25,6 +25,8 @@ module "eks" {
   eks-cluster-role-name                       = var.eks-cluster-role-name
   eks-node-group-role-name                    = var.eks-node-group-role-name
 
+  tags                                        = var.tags
+
 }
 
 module "helm" {
@@ -52,6 +54,8 @@ module "helm" {
   prom-graf-helm-values-file-path     = var.prom-graf-helm-values-file-path
   prom-graf-namespace                 = var.prom-graf-namespace
 
+  tags                                        = var.tags
+
 }
 
 module "irsa" {
@@ -63,12 +67,16 @@ module "irsa" {
   cert-manager-namespace = var.cert-manager-namespace
   external-dns-namespace = var.external-dns-namespace
 
+  tags                                        = var.tags
+
 }
 
 module "route53" {
     source = "./modules/route53"
 
   domain_name = var.domain_name
+
+  tags                                        = var.tags
 
 }
 
@@ -87,5 +95,7 @@ module "vpc" {
   availability-zone-1             = var.availability-zone-1
   availability-zone-2             = var.availability-zone-2
   route-cidr-block                = var.route-cidr-block
+
+  tags                                        = var.tags
 
 }

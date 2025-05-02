@@ -57,3 +57,8 @@ variable "route-cidr-block" {
   description = "CIDR block for the route"
   type        = string
 }
+
+variable "tags" {
+  description = "Tags for Resources"
+  type        = map(string)
+}

@@ -97,3 +97,8 @@ variable "private-subnet-2-id" {
   description = "Private subnet 2 ID"
   type        = string
 }
+
+variable "tags" {
+  description = "Tags for Resources"
+  type        = map(string)
+}

@@ -77,3 +77,8 @@ variable "external-dns-irsa-role-arn" {
   description = "IAM role ARN for external-dns IRSA"
   type        = string
 }
+
+variable "tags" {
+  description = "Tags for Resources"
+  type        = map(string)
+}
