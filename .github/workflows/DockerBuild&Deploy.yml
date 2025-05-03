@@ -48,7 +48,7 @@ jobs:
             - name: Trivy Scan
               uses: aquasecurity/trivy-action@master
               with:
-                image-ref: threat-composer-tool:latest
+                image-ref: weather-app:latest
                 severity: 'CRITICAL,HIGH'
                 format: 'sarif'
                 output: 'trivy-results-Docker.sarif'
