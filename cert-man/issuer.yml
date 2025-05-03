@@ -4,7 +4,7 @@ metadata:
   name: issuer
 spec:
   acme:
-    server: "https://acme-staging-v02.api.letsencrypt.org/directory" # the following is the production server: "https://acme-v02.api.letsencrypt.org/directory" and following is the staging server: "https://acme-staging-v02.api.letsencrypt.org/directory"
+    server: "https://acme-v02.api.letsencrypt.org/directory" # the following is the production server: "https://acme-v02.api.letsencrypt.org/directory" and following is the staging server: "https://acme-staging-v02.api.letsencrypt.org/directory"
     email: "junedwork@hotmail.com"
     privateKeySecretRef:
       name: issuer
