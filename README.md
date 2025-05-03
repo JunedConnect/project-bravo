@@ -13,7 +13,7 @@ The **Weather API App** is a containerised Node.js application deployed on **AWS
 This setup uses:
 
 
-- **Cert Manager** to automate the issuance and renewal of TLS certificates
+- **Cert Manager** to automate the issuing and renewal of TLS certificates.
 
 - **External DNS** to dynamically manage Route 53 records based on Kubernetes ingress resources, eliminating manual DNS configuration.
 
