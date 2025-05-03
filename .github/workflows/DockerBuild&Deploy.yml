@@ -42,8 +42,8 @@ jobs:
 
             - name: Build
               run: |
-                docker build -t threat-composer-tool .
-                docker tag threat-composer-tool:latest ${{ secrets.AWS_REGISTRY }}/threat-composer-tool:latest
+                docker build -t weather-app .
+                docker tag weather-app:latest ${{ secrets.AWS_REGISTRY }}/weather-app:latest
 
             - name: Trivy Scan
               uses: aquasecurity/trivy-action@master
@@ -66,4 +66,4 @@ jobs:
 
             - name: Push to ECR
               run: |
-                docker push ${{ secrets.AWS_REGISTRY }}/threat-composer-tool:latest
+                docker push ${{ secrets.AWS_REGISTRY }}/weather-app:latest
