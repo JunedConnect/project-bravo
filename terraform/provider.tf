@@ -23,7 +23,6 @@ provider "aws" {
   region = "eu-west-2"
 }
 
-
 provider "kubernetes" {
   host                   = module.eks.eks-cluster-endpoint
   cluster_ca_certificate = base64decode(module.eks.eks-cluster-ca-data)
