@@ -32,7 +32,7 @@ jobs:
 
             - name: Download terraform.tfvars from S3 Bucket
               run: |
-                aws s3 cp s3://tf-state-eks-project/terraform.tfvars .
+                aws s3 cp s3://tf-state-eks-project-bravo/terraform.tfvars .
   
             - name: Setup Tflint
               uses: terraform-linters/setup-tflint@master
