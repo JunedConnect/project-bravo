@@ -35,8 +35,9 @@ jobs:
 
             - name: Terraform Init
               run: terraform init
+              
+            - name: Destroy Helm Releases
+              run: terraform destroy -target=module.helm -auto-approve
 
             - name: Terraform Destroy
-              run: |
-                export KUBE_CONFIG_PATH=~/home/runner/.kube/config
-                terraform destroy -auto-approve
+              run: terraform destroy -auto-approve
