@@ -24,38 +24,38 @@ resource "aws_iam_role" "cert-manager-irsa-role" {
       Action = "sts:AssumeRoleWithWebIdentity",
       Condition = {
         StringEquals = {
-            "${aws_iam_openid_connect_provider.eks.url}:sub" = "system:serviceaccount:${var.cert-manager-namespace}:cert-manager"
-            "${aws_iam_openid_connect_provider.eks.url}:aud" = "sts.amazonaws.com"
-          }
+          "${aws_iam_openid_connect_provider.eks.url}:sub" = "system:serviceaccount:${var.cert-manager-namespace}:cert-manager"
+          "${aws_iam_openid_connect_provider.eks.url}:aud" = "sts.amazonaws.com"
+        }
       }
     }]
   })
 }
 
 resource "aws_iam_role_policy" "cert-manager-irsa-policy" {
-  name   = "cert-manager-irsa-policy"
-  role   = aws_iam_role.cert-manager-irsa-role.id
+  name = "cert-manager-irsa-policy"
+  role = aws_iam_role.cert-manager-irsa-role.id
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": "route53:GetChange",
-            "Effect": "Allow",
-            "Resource": "arn:aws:route53:::change/*"
-        },
-        {
-            "Action": [
-                "route53:ListResourceRecordSets",
-                "route53:ChangeResourceRecordSets"
-            ],
-            "Effect": "Allow",
-            "Resource": "arn:aws:route53:::hostedzone/${var.route53-zone-id}"
-        },
-        {
-            "Action": "route53:ListHostedZonesByName",
-            "Effect": "Allow",
-            "Resource": "*"
-        }
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Action" : "route53:GetChange",
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:route53:::change/*"
+      },
+      {
+        "Action" : [
+          "route53:ListResourceRecordSets",
+          "route53:ChangeResourceRecordSets"
+        ],
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:route53:::hostedzone/${var.route53-zone-id}"
+      },
+      {
+        "Action" : "route53:ListHostedZonesByName",
+        "Effect" : "Allow",
+        "Resource" : "*"
+      }
     ]
   })
 }
@@ -76,9 +76,9 @@ resource "aws_iam_role" "external-dns-irsa-role" {
       Action = "sts:AssumeRoleWithWebIdentity",
       Condition = {
         StringEquals = {
-            "${aws_iam_openid_connect_provider.eks.url}:sub" = "system:serviceaccount:${var.external-dns-namespace}:external-dns"
-            "${aws_iam_openid_connect_provider.eks.url}:aud" = "sts.amazonaws.com"
-          }
+          "${aws_iam_openid_connect_provider.eks.url}:sub" = "system:serviceaccount:${var.external-dns-namespace}:external-dns"
+          "${aws_iam_openid_connect_provider.eks.url}:aud" = "sts.amazonaws.com"
+        }
       }
     }]
   })
@@ -86,25 +86,25 @@ resource "aws_iam_role" "external-dns-irsa-role" {
 
 
 resource "aws_iam_role_policy" "external-dns-irsa-policy" {
-  name   = "external-dns-irsa-policy"
-  role   = aws_iam_role.external-dns-irsa-role.id
+  name = "external-dns-irsa-policy"
+  role = aws_iam_role.external-dns-irsa-role.id
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": "route53:ChangeResourceRecordSets",
-            "Effect": "Allow",
-            "Resource": "arn:aws:route53:::hostedzone/${var.route53-zone-id}"
-        },
-        {
-            "Action": [
-                "route53:ListTagsForResource",
-                "route53:ListResourceRecordSets",
-                "route53:ListHostedZones"
-            ],
-            "Effect": "Allow",
-            "Resource": "*"
-        }
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Action" : "route53:ChangeResourceRecordSets",
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:route53:::hostedzone/${var.route53-zone-id}"
+      },
+      {
+        "Action" : [
+          "route53:ListTagsForResource",
+          "route53:ListResourceRecordSets",
+          "route53:ListHostedZones"
+        ],
+        "Effect" : "Allow",
+        "Resource" : "*"
+      }
     ]
-})
+  })
 }

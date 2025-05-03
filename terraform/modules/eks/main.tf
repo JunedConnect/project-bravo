@@ -2,7 +2,7 @@ resource "aws_eks_cluster" "this" {
   name = var.name
 
   access_config {
-    authentication_mode = var.authentication-mode
+    authentication_mode                         = var.authentication-mode
     bootstrap_cluster_creator_admin_permissions = var.bootstrap-cluster-creator-admin-permissions
   }
 
@@ -66,10 +66,10 @@ resource "aws_eks_node_group" "this" {
   cluster_name    = aws_eks_cluster.this.name
   node_group_name = var.node-group-name
   node_role_arn   = aws_iam_role.eks-node-group-role.arn
-  subnet_ids      = [
-      var.private-subnet-1-id,
-      var.private-subnet-2-id
-    ]
+  subnet_ids = [
+    var.private-subnet-1-id,
+    var.private-subnet-2-id
+  ]
 
   scaling_config {
     desired_size = var.desired-size

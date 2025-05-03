@@ -1,27 +1,24 @@
-# Stage 1: Build
-FROM node:18-alpine AS builder
+FROM node:23-alpine AS builder
 
 WORKDIR /app
 
-# Copy the relevant dependencies first for layer caching
 COPY package*.json ./
 
+# installs the dependencies
 RUN npm install
 
-# Copy the rest of the source code
 COPY . .
 
-# Build the app
+# makes the application production-ready and stores fils in the /dist directory
 RUN npm run build
 
-# Stage 2: Multistage
+
+# Stage 2. Verified provider docker image that is more secure than the original as it runs as non-root
 FROM nginxinc/nginx-unprivileged:1.27-alpine-slim
 
-# Remove the default PID directive to avoid permission issues
-RUN sed -i '/^pid/d' /etc/nginx/nginx.conf && \
-    echo "pid /tmp/nginx.pid;" >> /etc/nginx/nginx.conf
+# allows to run the image as a non-root user
+RUN sed -i '/^pid/d' /etc/nginx/nginx.conf
+RUN echo "pid /tmp/nginx.pid;" >> /etc/nginx/nginx.conf
 
-# Copy the built app from build stage
+# copies the production-ready files to the nginx directory
 COPY --from=builder /app/dist /usr/share/nginx/html
-
-CMD ["nginx", "-g", "daemon off;"]

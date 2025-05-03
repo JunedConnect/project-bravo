@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: 677276074604.dkr.ecr.eu-west-2.amazonaws.com/to-do-app:latest
+        image: 677276074604.dkr.ecr.eu-west-2.amazonaws.com/weather-app
         ports:
         - containerPort: 8080
 

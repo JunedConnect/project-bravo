@@ -13,8 +13,8 @@ dist-ssr
 *.local
 
 # Editor directories and files
-.vscode/*
 !.vscode/extensions.json
+.vs
 .idea
 .DS_Store
 *.suo
@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+# Local PWA dist folder
+dev-dist
+
+README.md
