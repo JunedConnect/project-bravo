@@ -38,5 +38,5 @@ jobs:
 
             - name: Terraform Destroy
               run: |
-                export KUBE_CONFIG_PATH=~/.kube/config
+                export KUBE_CONFIG_PATH=~/home/runner/.kube/config
                 terraform destroy -auto-approve
