@@ -23,6 +23,12 @@ This setup uses:
 
 <br>
 
+## Architecture Diagram
+
+![AD](https://raw.githubusercontent.com/JunedConnect/project-bravo/main/images/Architecture%20Diagram.png)
+
+<br>
+
 ## Key Components:
 
 - **Dockerisation**: The app is containerised using a **Dockerfile**, utilising multi-stage builds.
