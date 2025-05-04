@@ -1,6 +1,6 @@
 # Weather App
 
-A simple Weather App that fetches and displays live weather data and forecasts for any city using React, Tailwind CSS, and Axios. 🌦️
+A simple Weather App that fetches and displays live weather data and forecasts for any city using React, Tailwind CSS, and Axios.
 
 - **Features**: 
   - Fetch weather data from an API.
@@ -13,13 +13,34 @@ A simple Weather App that fetches and displays live weather data and forecasts f
   - **Tailwind CSS**: For styling the UI, providing a responsive and modern design.
   - **Axios**: For making HTTP requests to fetch weather data from the API.
 
-## RESTful API
+- **API Endpoint**:
+  - The app fetches data from this endpoint (https://goweather.herokuapp.com/weather/Bangalore)
 
-- **Endpoint**: https://goweather.herokuapp.com/weather/Bangalore
-- The app fetches data from this endpoint, providing current weather, wind details, and a 3-day forecast.
+<br>
 
-## Additional Details
+## Local Deployment
 
-- Developed by [Aditya](https://github.com/EmaniAditya) and is live at [https://emaniaditya.github.io/weather-app](https://emaniaditya.github.io/weather-app).
-- Built on top of the [weather-api](https://github.com/robertoduessmann/weather-api).
+We need to build the Docker image. This is done by running the following command:
 
+```bash
+docker build -t weather-app .
+```
+---
+
+### Step 3: Run the Docker Container
+After the image has been built, we run it as a container using the following command while in the root directory of the app (i.e. where the dockerfile is located):
+
+```bash
+docker run -d -p 8080:8080 weather-app
+```
+
+FYI: The default container port for this docker image is port 8080.
+
+---
+
+### Step 4: Test the Container
+Once the container is running, open your web browser and visit:
+
+```bash
+http://localhost:8080
+```
