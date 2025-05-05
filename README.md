@@ -1,4 +1,4 @@
-# Weather API App Deployment
+# WindOps
 
 This project automates the deployment of the **Weather API App** using **AWS**, **Terraform**, **Docker**, and **CI/CD pipelines**. Originally set up manually using **AWS Console**, the process has been automated to provide a secure, scalable, and streamlined deployment.
 
